@@ -5,7 +5,7 @@ const cors = require('cors')
 
 
 const port = 3000
-
+let data = []
 
 app.use(cors())
 app.use(express.json())
@@ -18,10 +18,16 @@ app.get('/', (req, res) => {
   // res.json({name:name,id:id})
 })
 
+app.get('/button', (req, res) => {
+  res.status(200).json(data)
+})
 
 app.post('/something', (req, res) => {
   const all = req.body
   res.status(200).json(all)
+  data = [...all]
+  console.log(data);
+  
     
 
 //   console.log({name:name,id:id,value:value})
